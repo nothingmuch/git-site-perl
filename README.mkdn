@@ -1,0 +1,20 @@
+Installation
+============
+
+Initialize the `.git` and configure `CPAN.pm` by running:
+
+    % git site-perl-init
+
+`$Config{installsitelib}` becomes a standard git repository.
+
+Usage
+=====
+
+Use CPAN normally
+
+    % cpan Module::Foo
+
+`git commit` will be run automatically after every `make install` or `build
+install` invocation.
+
+

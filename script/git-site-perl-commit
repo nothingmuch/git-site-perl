@@ -1,0 +1,22 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+use Cwd qw(cwd);
+use Config;
+
+run(@ARGV);
+
+my ( $name ) = ( cwd() =~ m{([^/]+?)(-\w+)?$}x );
+
+chdir $Config{installsitelib} or die $!;
+
+run(qw(git add .));
+system(qw(git commit -m), $name);
+
+sub run {
+	if ( my $exit = system(@_) != 0 ) {
+		exit $exit;
+	}
+}
